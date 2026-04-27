@@ -1,55 +1,29 @@
-# Mintlify Starter Kit
+# Omnier documentation
 
-Use the starter kit to get your docs deployed and ready to customize.
+This repository powers the public **Omnier** docs (Mintlify). Content is MDX in the repo root; site config is [`docs.json`](./docs.json).
 
-Click the green **Use this template** button at the top of this repo to copy the Mintlify starter kit. The starter kit contains examples with
+**Pages (in order):** [What is Omnier?](./index.mdx) (home) → [Getting started](./getting-started.mdx). Written for founders and sales users, not developers.
 
-- Guide pages
-- Navigation
-- Customizations
-- API reference pages
-- Use of popular components
+## Local preview
 
-**[Follow the full quickstart guide](https://starter.mintlify.com/quickstart)**
-
-## AI-assisted writing
-
-Set up your AI coding tool to work with Mintlify:
+[Install the Mintlify CLI](https://www.npmjs.com/package/mint), then from this directory:
 
 ```bash
-npx skills add https://mintlify.com/docs
-```
-
-This command installs Mintlify's documentation skill for your configured AI tools like Claude Code, Cursor, Windsurf, and others. The skill includes component reference, writing standards, and workflow guidance.
-
-See the [AI tools guides](/ai-tools) for tool-specific setup.
-
-## Development
-
-Install the [Mintlify CLI](https://www.npmjs.com/package/mint) to preview your documentation changes locally. To install, use the following command:
-
-```
 npm i -g mint
-```
-
-Run the following command at the root of your documentation, where your `docs.json` is located:
-
-```
 mint dev
 ```
 
-View your local preview at `http://localhost:3000`.
+Open the URL shown (commonly `http://localhost:3000`).
 
-## Publishing changes
+## Authoring
 
-Install our GitHub app from your [dashboard](https://dashboard.mintlify.com/settings/organization/github-app) to propagate changes from your repo to your deployment. Changes are deployed to production automatically after pushing to the default branch.
+- Add or edit `.mdx` files.
+- Register each page in `docs.json` under `navigation` → `tabs` → `groups` → `pages` (use the path without `.mdx`).
 
-## Need help?
+## Publishing
 
-### Troubleshooting
+Connect this GitHub repository in the [Mintlify dashboard](https://dashboard.mintlify.com) and push to the deployment branch. Builds run automatically on push.
 
-- If your dev environment isn't running: Run `mint update` to ensure you have the most recent version of the CLI.
-- If a page loads as a 404: Make sure you are running in a folder with a valid `docs.json`.
+## Styling
 
-### Resources
-- [Mintlify documentation](https://mintlify.com/docs)
+Docs follow the product palette from the landing app: **Inter**, background **`#F8F7F6`**, primary accent **`#4A6B5C`** (see `docs.json` and [`globals.css`](../landingpage/frontend/src/app/globals.css) in the monorepo).

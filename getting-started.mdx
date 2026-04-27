@@ -1,0 +1,32 @@
+---
+title: Getting started
+description: Connect Omnier in Claude in a few steps.
+icon: "rocket"
+---
+
+Connect **Claude** to Omnier once, then use natural language to work your pipeline. You do not need an account before you start—the browser will offer **sign in** or **sign up** when you connect.
+
+## Claude (Desktop or web)
+
+Use the **connector UI** in Claude.
+
+1. In **Claude**, open **Settings**.
+2. Go to **Connectors** → **Custom connectors**.
+3. **Add** a connector.
+4. **Paste** Server URL:
+
+   `https://mcp.getomnier.com/mcp`
+
+5. **Connect** and complete authorization flow. —**sign in** or **create an account** if needed.
+6. In a new chat, try:
+
+   > *Show me what Omnier is and what you can do to with it*
+
+
+## Claude Code (CLI)
+
+```bash
+claude mcp add --transport http omnier https://mcp.getomnier.com/mcp
+```
+
+If your CLI does not accept that, run `claude mcp add`, pick **HTTP**, name it **omnier**, paste the same URL, then start a session and use the prompt above.

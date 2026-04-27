@@ -1,133 +1,68 @@
 ---
-title: "Introduction"
-description: "Welcome to the new home for your documentation"
-icon: 'star'
+title: What is Omnier?
+description: A CRM that Claude uses as your system of record for sales.
+icon: "sparkles"
 ---
 
-## Setting up
+**Omnier** is a **CRM for Agents**: **Claude** reads and updates your **companies, contacts, and deals** through a single connection. Your data lives in one **cloud workspace**.
 
-Get your documentation site up and running in minutes.
+- **In Claude** — you drive pipeline work in **plain language** (research, follow-ups, updates). Claude calls Omnier; Omnier is the source of truth.
+- **In the web app** — **[app.getomnier.com](https://app.getomnier.com)** shows **activity, records, and context** in one place.
 
-<Card
-  title="Start here"
-  icon="rocket"
-  href="/quickstart"
-  horizontal
->
-  Follow our three step quickstart guide.
+**Who it is for:** founder-led and small teams doing outbound, demos, and deal tracking who want the CRM **behind** the conversation, not another tab to re-type into.
+
+<Card title="Set up in Claude" icon="arrow-right" href="/getting-started" horizontal>
+  Add the Omnier connector, sign in or create an account, then ask Claude to walk your pipeline.
 </Card>
 
-## Make it yours
+## Data model
 
-Design a docs site that looks great and empowers your users.
+Schema lines up with **`read_skill`**: `deals`, `companies`, `contacts`, `notes`, `tasks`, `activity`. Every table also carries the usual system fields (`id`, `created_at`, and `user_id` where applicable); the **Key properties** column lists the main business columns only, by name.
 
-<Columns cols={2}>
-  <Card
-    title="Edit locally"
-    icon="pen-to-square"
-    href="/development"
-  >
-    Edit your docs locally and preview them in real time.
-  </Card>
-  <Card
-    title="Customize your site"
-    icon="palette"
-    href="/essentials/settings"
-  >
-    Customize the design and colors of your site to match your brand.
-  </Card>
-    <Card
-    title="Set up navigation"
-    icon="map"
-    href="/essentials/navigation"
-  >
-    Organize your docs to help users find what they need and succeed with your product.
-  </Card>
-  <Card
-    title="API documentation"
-    icon="terminal"
-    href="/api-reference/introduction"
-  >
-    Auto-generate API documentation from OpenAPI specifications.
-  </Card>
-</Columns>
+| Object | Description | Key properties |
+| --- | --- | --- |
+| `deals` | Opportunity in a pipeline | `value`, `currency`, `expected_close_date`, `stage_id`, `name`, `probability`, `last_activity_at`, `next_follow_up_at`, `lost_reason`, `won_reason`, `deal_source`, `deal_type`, `momentum`, `agent_brief`, `latest_activity` |
+| `user_deal_stages` | Stage row for a kanban | `name`, `order_index` |
+| `user_pipelines` | Named pipeline | `pipeline_name` |
+| `deal_update_logs` | Audit line when a deal changes | `update_summary`, `deal_id` |
+| `companies` | Account / organization | `name`, `description`, `website`, `industry`, `employee_count`, `location`, `yc_batch`, `funding_stage`, `company_stage`, `icp_fit`, `icp_fit_reason`, `outreach_status`, `owner_id`, `updated_at` |
+| `company_update_logs` | Audit line when a company changes | `update_summary`, `company_id` |
+| `companies_deals` | Many-to-many company ↔ deal | `company_id`, `deal_id` |
+| `contacts` | Person | `first_name`, `last_name`, `email`, `linkedin_url`, `title`, `phone`, `location`, `timezone`, `last_contacted_at`, `contact_source` |
+| `contact_update_logs` | Audit line when a contact changes | `update_summary`, `contact_id` |
+| `contacts_companies` | Many-to-many contact ↔ company | `contact_id`, `company_id` |
+| `deals_contacts` | Many-to-many deal ↔ contact | `deal_id`, `contact_id` |
+| `notes` | Note body | `note_body`, `title` |
+| `notes_deals` | Note attached to a deal | `note_id`, `deal_id` |
+| `notes_contacts` | Note attached to a contact | `note_id`, `contact_id` |
+| `notes_companies` | Note attached to a company | `note_id`, `company_id` |
+| `tasks` | Task on a parent record | `title`, `content`, `assigned_to`, `due_date`, `status`, `parent_type`, `parent_id`, `updated_at`, `task_priority` |
+| `activity` | Feed row (payload in `content`) | `content` |
 
-## Create beautiful pages
+### How objects connect
 
-Everything you need to create world-class documentation.
+| Connection | Detail |
+| --- | --- |
+| `deals` → `user_deal_stages` | `deals.stage_id` references `user_deal_stages.id` |
+| `deals` ↔ `companies` | Through `companies_deals` (`company_id`, `deal_id`) |
+| `contacts` ↔ `companies` | Through `contacts_companies` (`contact_id`, `company_id`) |
+| `contacts` ↔ `deals` | Through `deals_contacts` (`contact_id`, `deal_id`) |
+| `notes` ↔ `deals` / `contacts` / `companies` | Through `notes_deals`, `notes_contacts`, `notes_companies` |
+| `tasks` → contact, company, or deal | `parent_type` + `parent_id` point at the parent row |
+| `deal_update_logs` → `deals` | `deal_id` |
+| `company_update_logs` → `companies` | `company_id` |
+| `contact_update_logs` → `contacts` | `contact_id` |
+| `activity` | Scoped to the user; `content` is JSON that can reference deals, companies, and contacts in the feed |
 
-<Columns cols={2}>
-  <Card
-    title="Write with MDX"
-    icon="pen-fancy"
-    href="/essentials/markdown"
-  >
-    Use MDX to style your docs pages.
-  </Card>
-  <Card
-    title="Code samples"
-    icon="code"
-    href="/essentials/code"
-  >
-    Add sample code to demonstrate how to use your product.
-  </Card>
-  <Card
-    title="Images"
-    icon="image"
-    href="/essentials/images"
-  >
-    Display images and other media.
-  </Card>
-  <Card
-    title="Reusable snippets"
-    icon="recycle"
-    href="/essentials/reusable-snippets"
-  >
-    Write once and reuse across your docs.
-  </Card>
-</Columns>
+### Common enum values (selected)
 
-## Make your content agent ready
-
-Make your docs work for humans and AI agents alike.
-
-<Columns cols={2}>
-  <Card
-    title="Prompt component"
-    icon="robot"
-    href="/agent-ready/prompt"
-  >
-    Embed shareable AI prompts readers can copy or open in Cursor.
-  </Card>
-  <Card
-    title="Visibility"
-    icon="eye"
-    href="/agent-ready/visibility"
-  >
-    Show different content to humans and agents reading your docs.
-  </Card>
-  <Card
-    title="Contextual menu"
-    icon="bolt"
-    href="/agent-ready/contextual"
-  >
-    Give readers one-click access to Claude, ChatGPT, Cursor, and more.
-  </Card>
-  <Card
-    title="AI coding tools"
-    icon="wand-magic-sparkles"
-    href="/ai-tools/claude-code"
-  >
-    Set up Claude Code, Cursor, or Windsurf with Mintlify's skill.
-  </Card>
-</Columns>
-
-## Need inspiration?
-
-<Card
-  title="See complete examples"
-  icon="stars"
-  href="https://mintlify.com/customers"
->
-  Browse our showcase of exceptional documentation sites.
-</Card>
+| Field | Allowed values (from schema) |
+| --- | --- |
+| **companies.funding_stage** | `bootstrapped`, `pre_seed`, `seed`, `series_a`, `series_b`, `series_c`, `series_c_plus`, `other` |
+| **companies.company_stage** | `pre_product`, `building`, `early_customers`, `scaling` |
+| **companies.icp_fit** | `disqualified`, `weak`, `good`, `strong` |
+| **companies.outreach_status** | `not_started`, `in_sequence`, `responded`, `meeting_booked`, `not_interested`, `revisit_later`, `onboarded`, `churned` |
+| **contacts.contact_source** | `linkedin`, `referral`, `inbound`, `yc_network`, `cold`, `event`, `other` |
+| **tasks.task_status** | `open`, `in_progress`, `done` |
+| **tasks.task_priority** | `low`, `medium`, `high`, `urgent` |
+| **tasks.parent_type** / **notes** (parent) | `contact`, `company`, `deal` |

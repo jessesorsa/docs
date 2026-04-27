@@ -1,126 +1,82 @@
 {
   "$schema": "https://mintlify.com/docs.json",
+  "name": "Omnier",
+  "description": "Omnier is a CRM for Agents: companies, contacts, deals, and your workspace. Then connect in a few steps.",
   "theme": "mint",
-  "name": "Mintlify Starter Kit",
-  "colors": {
-    "primary": "#16A34A",
-    "light": "#07C983",
-    "dark": "#15803D"
+  "favicon": "/favicon.ico",
+  "logo": {
+    "light": "/images/omnier-logo.png",
+    "dark": "/images/omnier-logo.png",
+    "href": "https://getomnier.com"
   },
-  "favicon": "/favicon.svg",
+  "colors": {
+    "primary": "#D1D5DB",
+    "light": "#D1D5DB",
+    "dark": "#9CA3AF"
+  },
+  "background": {
+    "light": "#F8F7F6",
+    "dark": "#121212"
+  },
+  "fonts": {
+    "family": "Inter, ui-sans-serif, system-ui, -apple-system, sans-serif"
+  },
   "navigation": {
+    "global": {
+      "anchors": [
+        {
+          "anchor": "Website",
+          "href": "https://getomnier.com",
+          "icon": "globe"
+        },
+        {
+          "anchor": "App",
+          "href": "https://app.getomnier.com",
+          "icon": "grid-2"
+        }
+      ]
+    },
     "tabs": [
       {
         "tab": "Guides",
         "groups": [
           {
-            "group": "Getting started",
+            "group": "Omnier",
             "pages": [
               "index",
-              "quickstart",
-              "development"
-            ]
-          },
-          {
-            "group": "Customization",
-            "pages": [
-              "essentials/settings",
-              "essentials/navigation"
-            ]
-          },
-          {
-            "group": "Writing content",
-            "pages": [
-              "essentials/markdown",
-              "essentials/code",
-              "essentials/images",
-              "essentials/components",
-              "essentials/reusable-snippets"
-            ]
-          },
-          {
-            "group": "Agent ready",
-            "pages": [
-              "agent-ready/prompt",
-              "agent-ready/visibility",
-              "agent-ready/contextual",
-              "ai-tools/cursor",
-              "ai-tools/claude-code",
-              "ai-tools/windsurf"
-            ]
-          }
-        ]
-      },
-      {
-        "tab": "API reference",
-        "groups": [
-          {
-            "group": "API documentation",
-            "pages": [
-              "api-reference/introduction"
-            ]
-          },
-          {
-            "group": "Endpoint examples",
-            "pages": [
-              "api-reference/endpoint/get",
-              "api-reference/endpoint/create",
-              "api-reference/endpoint/delete",
-              "api-reference/endpoint/webhook"
+              "getting-started"
             ]
           }
         ]
       }
-    ],
-    "global": {
-      "anchors": [
-        {
-          "anchor": "Documentation",
-          "href": "https://mintlify.com/docs",
-          "icon": "book-open-cover"
-        },
-        {
-          "anchor": "Blog",
-          "href": "https://mintlify.com/blog",
-          "icon": "newspaper"
-        }
-      ]
-    }
-  },
-  "logo": {
-    "light": "/logo/light.svg",
-    "dark": "/logo/dark.svg"
+    ]
   },
   "navbar": {
     "links": [
       {
-        "label": "Support",
-        "href": "mailto:hi@mintlify.com"
+        "label": "Getting started",
+        "href": "/getting-started"
       }
     ],
     "primary": {
       "type": "button",
-      "label": "Dashboard",
-      "href": "https://dashboard.mintlify.com"
+      "label": "Open app",
+      "href": "https://app.getomnier.com"
     }
   },
   "contextual": {
     "options": [
-     "copy",
-     "view",
-     "chatgpt",
-     "claude",
-     "perplexity",
-     "mcp",
-     "cursor",
-     "vscode"
-   ]
+      "copy",
+      "view",
+      "claude",
+      "cursor",
+      "vscode"
+    ]
   },
   "footer": {
     "socials": {
-      "x": "https://x.com/mintlify",
-      "github": "https://github.com/mintlify",
-      "linkedin": "https://linkedin.com/company/mintlify"
+      "github": "https://github.com/jessesorsa/docs",
+      "website": "https://getomnier.com"
     }
   }
 }

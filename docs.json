@@ -10,9 +10,9 @@
     "href": "https://getomnier.com"
   },
   "colors": {
-    "primary": "#D1D5DB",
-    "light": "#D1D5DB",
-    "dark": "#9CA3AF"
+    "primary": "#57534E",
+    "light": "#A8A29E",
+    "dark": "#0A0A0A"
   },
   "background": {
     "light": "#F8F7F6",

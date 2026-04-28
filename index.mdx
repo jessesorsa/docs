@@ -1,23 +1,35 @@
 ---
-title: What is Omnier?
-description: A CRM that Claude uses as your system of record for sales.
+title: Overview
+description: What is Omnier?
 icon: "sparkles"
 ---
 
-**Omnier** is a **CRM for Agents**: **Claude** reads and updates your **companies, contacts, and deals** through a single connection. Your data lives in one **cloud workspace**.
+Omnier is a CRM built for agents and aimed at founder-led sales. 
 
-- **In Claude** — you drive pipeline work in **plain language** (research, follow-ups, updates). Claude calls Omnier; Omnier is the source of truth.
-- **In the web app** — **[app.getomnier.com](https://app.getomnier.com)** shows **activity, records, and context** in one place.
+1. The agent does all the CRM and sales data work while you focus on live conversations and relationships. It is built for agentic work rather than a shallow layer on legacy CRM APIs.
 
-**Who it is for:** founder-led and small teams doing outbound, demos, and deal tracking who want the CRM **behind** the conversation, not another tab to re-type into.
+2. You review the work at [app.getomnier.com](https://app.getomnier.com). The app shows all activity (what ran, what changed), and allows you to generate custom views on your sales data, so you keep a clear record beyond the chat transcript.
 
-<Card title="Set up in Claude" icon="arrow-right" href="/getting-started" horizontal>
-  Add the Omnier connector, sign in or create an account, then ask Claude to walk your pipeline.
+<Card title="Set up in Claude" icon="rocket" href="/getting-started" horizontal>
+  Connect Omnier to your agent.
 </Card>
+
+## Omnier MCP tools
+
+Omnier exposes four tools which your agent uses. Together they define how the agent reasons, queries your CRM, applies changes, and shows its progress in the Omnier UI.
+
+| Tool | Role |
+| --- | --- |
+| **`read_skill`** | Loads the schemas and rules for whichever CRM objects apply to your ask before structured reads or writes. |
+| **`query`** | Reads your workspace (reports, lookups, pipelines) freely using SQL. RLS applied for all queries. |
+| **`action`** | Writes (create, update, delete, link records) to your workspace freely using SQL. RLS applied for all actions. |
+| **`log_activity`** | Ends every workflow. This records the human-facing activity outcome in the Omnier UI. |
+
+**Typical order:** `read_skill` → `query` / `action` → `log_activity`
 
 ## Data model
 
-Schema lines up with **`read_skill`**: `deals`, `companies`, `contacts`, `notes`, `tasks`, `activity`. Every table also carries the usual system fields (`id`, `created_at`, and `user_id` where applicable); the **Key properties** column lists the main business columns only, by name.
+The data model inside Omnier. This defines what objects and properties are available for the agent to use.
 
 | Object | Description | Key properties |
 | --- | --- | --- |

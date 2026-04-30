@@ -1,7 +1,7 @@
 {
   "$schema": "https://mintlify.com/docs.json",
   "name": "Omnier",
-  "description": "Omnier is a CRM for Agents: companies, contacts, deals, and your workspace. Then connect in a few steps.",
+  "description": "Omnier is the GTM brain for Agents.",
   "theme": "mint",
   "favicon": "/favicon.ico",
   "logo": {

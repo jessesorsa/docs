@@ -4,11 +4,11 @@ description: What is Omnier?
 icon: "sparkles"
 ---
 
-Omnier is a CRM built for agents and aimed at founder-led sales. 
+Omnier is the GTM brain built for agents and aimed at founder-led sales. 
 
-1. The agent does all the CRM and sales data work while you focus on live conversations and relationships. It is built for agentic work rather than a shallow layer on legacy CRM APIs.
+1. The agent does all GTM data work while you focus on live conversations and relationships. It is built for agentic work rather than a shallow layer on legacy CRM APIs.
 
-2. You review the work at [app.getomnier.com](https://app.getomnier.com). The app shows all activity (what ran, what changed), and allows you to generate custom views on your sales data, so you keep a clear record beyond the chat transcript.
+2. You review the work at [app.getomnier.com](https://app.getomnier.com). The app shows all activity (what ran, what changed), and allows you to generate custom views on the same GTM data your agent works with.
 
 <Card title="Set up in Claude" icon="rocket" href="/getting-started" horizontal>
   Connect Omnier to your agent.
@@ -16,11 +16,11 @@ Omnier is a CRM built for agents and aimed at founder-led sales.
 
 ## Omnier MCP tools
 
-Omnier exposes four tools which your agent uses. Together they define how the agent reasons, queries your CRM, applies changes, and shows its progress in the Omnier UI.
+Omnier exposes four tools which your agent uses. Together they define how the agent reasons, queries the records, applies changes, and shows its progress in the Omnier UI.
 
 | Tool | Role |
 | --- | --- |
-| **`read_skill`** | Loads the schemas and rules for whichever CRM objects apply to your ask before structured reads or writes. |
+| **`read_skill`** | Loads the schemas and rules for whichever objects apply to your ask before structured reads or writes. |
 | **`query`** | Reads your workspace (reports, lookups, pipelines) freely using SQL. RLS applied for all queries. |
 | **`action`** | Writes (create, update, delete, link records) to your workspace freely using SQL. RLS applied for all actions. |
 | **`log_activity`** | Ends every workflow. This records the human-facing activity outcome in the Omnier UI. |
@@ -33,14 +33,14 @@ The data model inside Omnier. This defines what objects and properties are avail
 
 | Object | Description | Key properties |
 | --- | --- | --- |
-| `deals` | Opportunity in a pipeline | `value`, `currency`, `expected_close_date`, `stage_id`, `name`, `probability`, `last_activity_at`, `next_follow_up_at`, `lost_reason`, `won_reason`, `deal_source`, `deal_type`, `momentum`, `agent_brief`, `latest_activity` |
+| `deals` | Opportunity in a pipeline | `value`, `currency`, `expected_close_date`, `stage_id`, `name`, `probability`, `last_activity_at`, `next_follow_up_at`, `lost_reason`, `won_reason`, `deal_source`, `deal_type`, `momentum`, `agent_brief`, `latest_activity`, `win_hypothesis`, `blockers` |
 | `user_deal_stages` | Stage row for a kanban | `name`, `order_index` |
 | `user_pipelines` | Named pipeline | `pipeline_name` |
 | `deal_update_logs` | Audit line when a deal changes | `update_summary`, `deal_id` |
-| `companies` | Account / organization | `name`, `description`, `website`, `industry`, `employee_count`, `location`, `yc_batch`, `funding_stage`, `company_stage`, `icp_fit`, `icp_fit_reason`, `outreach_status`, `owner_id`, `updated_at` |
+| `companies` | Account / organization | `name`, `description`, `website`, `industry`, `employee_count`, `location`, `yc_batch`, `funding_stage`, `company_stage`, `icp_fit`, `icp_fit_reason`, `outreach_status`, `signals`, `tech_stack`, `owner_id`, `updated_at` |
 | `company_update_logs` | Audit line when a company changes | `update_summary`, `company_id` |
 | `companies_deals` | Many-to-many company ↔ deal | `company_id`, `deal_id` |
-| `contacts` | Person | `first_name`, `last_name`, `email`, `linkedin_url`, `title`, `phone`, `location`, `timezone`, `last_contacted_at`, `contact_source` |
+| `contacts` | Person | `first_name`, `last_name`, `email`, `linkedin_url`, `title`, `phone`, `location`, `timezone`, `last_contacted_at`, `contact_source`, `context`, `signals` |
 | `contact_update_logs` | Audit line when a contact changes | `update_summary`, `contact_id` |
 | `contacts_companies` | Many-to-many contact ↔ company | `contact_id`, `company_id` |
 | `deals_contacts` | Many-to-many deal ↔ contact | `deal_id`, `contact_id` |

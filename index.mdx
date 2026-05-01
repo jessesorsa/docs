@@ -1,16 +1,15 @@
 ---
-title: Overview
-description: What is Omnier?
+title: "Overview"
+description: "What is Omnier?"
 icon: "sparkles"
 ---
 
-Omnier is the GTM brain built for agents and aimed at founder-led sales. 
+Omnier is the GTM brain built for agents, and aimed at founder-led sales. It's the **system of recored** your agent uses as context for go-to-market. Key ideas of Omnier:
 
-1. The agent does all GTM data work while you focus on live conversations and relationships. It is built for agentic work rather than a shallow layer on legacy CRM APIs.
+1. Let your agent handle customer records while you focus on live conversations and relationships. Omnier is built for agent‑first work, not a shallow layer on legacy CRM APIs.
+2. You review the work at [app.getomnier.com](https://app.getomnier.com). The app shows all activity (what ran, what changed), and allows you to generate custom views on the same data your agent works with.
 
-2. You review the work at [app.getomnier.com](https://app.getomnier.com). The app shows all activity (what ran, what changed), and allows you to generate custom views on the same GTM data your agent works with.
-
-<Card title="Set up in Claude" icon="rocket" href="/getting-started" horizontal>
+<Card title="Set up in Claude" icon="rocket" horizontal href="/getting-started">
   Connect Omnier to your agent.
 </Card>
 
@@ -29,7 +28,7 @@ Omnier exposes four tools which your agent uses. Together they define how the ag
 
 ## Data model
 
-The data model inside Omnier. This defines what objects and properties are available for the agent to use.
+The data model inside Omnier. This defines what type of records and properties are available for the agent to use.
 
 | Object | Description | Key properties |
 | --- | --- | --- |
@@ -60,7 +59,7 @@ The data model inside Omnier. This defines what objects and properties are avail
 | `contacts` ↔ `companies` | Through `contacts_companies` (`contact_id`, `company_id`) |
 | `contacts` ↔ `deals` | Through `deals_contacts` (`contact_id`, `deal_id`) |
 | `notes` ↔ `deals` / `contacts` / `companies` | Through `notes_deals`, `notes_contacts`, `notes_companies` |
-| `tasks` → contact, company, or deal | `parent_type` + `parent_id` point at the parent row |
+| `tasks` → contact, company, or deal | `parent_type` \+ `parent_id` point at the parent row |
 | `deal_update_logs` → `deals` | `deal_id` |
 | `company_update_logs` → `companies` | `company_id` |
 | `contact_update_logs` → `contacts` | `contact_id` |
@@ -70,11 +69,11 @@ The data model inside Omnier. This defines what objects and properties are avail
 
 | Field | Allowed values (from schema) |
 | --- | --- |
-| **companies.funding_stage** | `bootstrapped`, `pre_seed`, `seed`, `series_a`, `series_b`, `series_c`, `series_c_plus`, `other` |
-| **companies.company_stage** | `pre_product`, `building`, `early_customers`, `scaling` |
-| **companies.icp_fit** | `disqualified`, `weak`, `good`, `strong` |
-| **companies.outreach_status** | `not_started`, `in_sequence`, `responded`, `meeting_booked`, `not_interested`, `revisit_later`, `onboarded`, `churned` |
-| **contacts.contact_source** | `linkedin`, `referral`, `inbound`, `yc_network`, `cold`, `event`, `other` |
-| **tasks.task_status** | `open`, `in_progress`, `done` |
-| **tasks.task_priority** | `low`, `medium`, `high`, `urgent` |
-| **tasks.parent_type** / **notes** (parent) | `contact`, `company`, `deal` |
+| **companies.funding\_stage** | `bootstrapped`, `pre_seed`, `seed`, `series_a`, `series_b`, `series_c`, `series_c_plus`, `other` |
+| **companies.company\_stage** | `pre_product`, `building`, `early_customers`, `scaling` |
+| **companies.icp\_fit** | `disqualified`, `weak`, `good`, `strong` |
+| **companies.outreach\_status** | `not_started`, `in_sequence`, `responded`, `meeting_booked`, `not_interested`, `revisit_later`, `onboarded`, `churned` |
+| **contacts.contact\_source** | `linkedin`, `referral`, `inbound`, `yc_network`, `cold`, `event`, `other` |
+| **tasks.task\_status** | `open`, `in_progress`, `done` |
+| **tasks.task\_priority** | `low`, `medium`, `high`, `urgent` |
+| **tasks.parent\_type** / **notes** (parent) | `contact`, `company`, `deal` |

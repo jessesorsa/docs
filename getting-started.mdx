@@ -1,28 +1,18 @@
 ---
-title: Getting started
-description: Connect Omnier to your Claude in a few simple steps.
+title: "Getting started"
+description: "Connect and setup Omnier in a few simple steps."
 icon: "rocket"
 ---
 
 ## Claude (Desktop or web)
 
-1. In **Claude**, open **Settings**.
-2. Go to **Connectors** → **Custom connectors**.
-3. **Add** a connector.
-4. **Paste** Server URL:
-
+1. In **Claude**, go to **Connectors** → Add **Custom connector**.
+2. **Paste** the mcp URL:
    `https://mcp.getomnier.com/mcp`
-
-5. **Connect** and complete the authorization flow—**sign in** or **create an account** if prompted.
-6. In a new chat, try:
-
-   > *Show me what Omnier is and what you can do to with it*
-
-
-## Claude Code (CLI)
-
-```bash
-claude mcp add --transport http omnier https://mcp.getomnier.com/mcp
-```
-
-If your CLI does not accept that, run `claude mcp add`, pick **HTTP**, name it **omnier**, paste the same URL, then start a session and use the prompt above.
+3. **Connect** and complete the authorization flow. **Sign in** or **create an account** if prompted.
+4. Go to Claude settings → **Add** the following snippet to **Instructions** (orients Claude to use Omnier correctly):
+   > _Run Omnier tool: read\_skill(\[“todo\_list”\]) the start of a session_
+5. Open a new chat → **Send** message:
+   > _Help me setup a todo list requirements document in Omnier_
+6. Tell Claude to
+   > _Create a todo list for today_

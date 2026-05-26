@@ -4,10 +4,10 @@ description: "What is Omnier?"
 icon: "sparkles"
 ---
 
-Omnier is the CRM built for agents, and aimed at founder-led sales. It's the **system of recored** your agent uses as context for go-to-market. Key ideas of Omnier:
+Omnier is a sales To-Do list for you and your agents. It's the **system of action** your agent uses to plan, run and record sales tasks.  Key ideas:
 
-1. Let your agent handle customer records while you focus on live conversations and relationships. Omnier is built for agent‑first work, not a shallow layer on legacy CRM APIs.
-2. You review the work at [app.getomnier.com](https://app.getomnier.com). The app shows all activity (what ran, what changed), and allows you to generate custom views on the same data your agent works with.
+1. Omnier enables your agent to turn signals from email, CRM, and meetings into a prioritized list of daily tasks
+2. The task list renders directly in your chat, so both you and the agent can run it together
 
 <Card title="Set up in Claude" icon="rocket" horizontal href="/getting-started">
   Connect Omnier to your agent.
@@ -15,65 +15,9 @@ Omnier is the CRM built for agents, and aimed at founder-led sales. It's the **s
 
 ## Omnier MCP tools
 
-Omnier exposes four tools which your agent uses. Together they define how the agent reasons, queries the records, applies changes, and shows its progress in the Omnier UI.
-
 | Tool | Role |
 | --- | --- |
-| **`read_skill`** | Loads the schemas and rules for whichever objects apply to your ask before structured reads or writes. |
-| **`query`** | Reads your workspace (reports, lookups, pipelines) freely using SQL. RLS applied for all queries. |
-| **`action`** | Writes (create, update, delete, link records) to your workspace freely using SQL. RLS applied for all actions. |
-| **`log_activity`** | Ends every workflow. This records the human-facing activity outcome in the Omnier UI. |
-
-**Typical order:** `read_skill` → `query` / `action` → `log_activity`
-
-## Data model
-
-The data model inside Omnier. This defines what type of records and properties are available for the agent to use.
-
-| Object | Description | Key properties |
-| --- | --- | --- |
-| `deals` | Opportunity in a pipeline | `value`, `currency`, `expected_close_date`, `stage_id`, `name`, `probability`, `last_activity_at`, `next_follow_up_at`, `lost_reason`, `won_reason`, `deal_source`, `deal_type`, `momentum`, `agent_brief`, `latest_activity`, `win_hypothesis`, `blockers` |
-| `user_deal_stages` | Stage row for a kanban | `name`, `order_index` |
-| `user_pipelines` | Named pipeline | `pipeline_name` |
-| `deal_update_logs` | Audit line when a deal changes | `update_summary`, `deal_id` |
-| `companies` | Account / organization | `name`, `description`, `website`, `industry`, `employee_count`, `location`, `yc_batch`, `funding_stage`, `company_stage`, `icp_fit`, `icp_fit_reason`, `outreach_status`, `signals`, `tech_stack`, `owner_id`, `updated_at` |
-| `company_update_logs` | Audit line when a company changes | `update_summary`, `company_id` |
-| `companies_deals` | Many-to-many company ↔ deal | `company_id`, `deal_id` |
-| `contacts` | Person | `first_name`, `last_name`, `email`, `linkedin_url`, `title`, `phone`, `location`, `timezone`, `last_contacted_at`, `contact_source`, `context`, `signals` |
-| `contact_update_logs` | Audit line when a contact changes | `update_summary`, `contact_id` |
-| `contacts_companies` | Many-to-many contact ↔ company | `contact_id`, `company_id` |
-| `deals_contacts` | Many-to-many deal ↔ contact | `deal_id`, `contact_id` |
-| `notes` | Note body | `note_body`, `title` |
-| `notes_deals` | Note attached to a deal | `note_id`, `deal_id` |
-| `notes_contacts` | Note attached to a contact | `note_id`, `contact_id` |
-| `notes_companies` | Note attached to a company | `note_id`, `company_id` |
-| `tasks` | Task on a parent record | `title`, `content`, `assigned_to`, `due_date`, `status`, `parent_type`, `parent_id`, `updated_at`, `task_priority` |
-| `activity` | Feed row (payload in `content`) | `content` |
-
-### How objects connect
-
-| Connection | Detail |
-| --- | --- |
-| `deals` → `user_deal_stages` | `deals.stage_id` references `user_deal_stages.id` |
-| `deals` ↔ `companies` | Through `companies_deals` (`company_id`, `deal_id`) |
-| `contacts` ↔ `companies` | Through `contacts_companies` (`contact_id`, `company_id`) |
-| `contacts` ↔ `deals` | Through `deals_contacts` (`contact_id`, `deal_id`) |
-| `notes` ↔ `deals` / `contacts` / `companies` | Through `notes_deals`, `notes_contacts`, `notes_companies` |
-| `tasks` → contact, company, or deal | `parent_type` \+ `parent_id` point at the parent row |
-| `deal_update_logs` → `deals` | `deal_id` |
-| `company_update_logs` → `companies` | `company_id` |
-| `contact_update_logs` → `contacts` | `contact_id` |
-| `activity` | Scoped to the user; `content` is JSON that can reference deals, companies, and contacts in the feed |
-
-### Common enum values (selected)
-
-| Field | Allowed values (from schema) |
-| --- | --- |
-| **companies.funding\_stage** | `bootstrapped`, `pre_seed`, `seed`, `series_a`, `series_b`, `series_c`, `series_c_plus`, `other` |
-| **companies.company\_stage** | `pre_product`, `building`, `early_customers`, `scaling` |
-| **companies.icp\_fit** | `disqualified`, `weak`, `good`, `strong` |
-| **companies.outreach\_status** | `not_started`, `in_sequence`, `responded`, `meeting_booked`, `not_interested`, `revisit_later`, `onboarded`, `churned` |
-| **contacts.contact\_source** | `linkedin`, `referral`, `inbound`, `yc_network`, `cold`, `event`, `other` |
-| **tasks.task\_status** | `open`, `in_progress`, `done` |
-| **tasks.task\_priority** | `low`, `medium`, `high`, `urgent` |
-| **tasks.parent\_type** / **notes** (parent) | `contact`, `company`, `deal` |
+| **`read_skill`** | Loads skills the agent needs to use Omnier efficiently. |
+| **`query`** | Reads your workspace (todolists, documents) freely using SQL. RLS applied for all queries. |
+| **`action`** | Writes (create, update, delete todolists and documents) to your workspace freely using SQL. RLS applied for all actions. |
+| show\_todo\_list | Shows a live UI view of todays todo list in the agent chat. |

@@ -1,7 +1,7 @@
 {
   "$schema": "https://mintlify.com/docs.json",
   "name": "Omnier",
-  "description": "Omnier is the GTM brain for Agents.",
+  "description": "Omnier is a sales to-do list for Agents",
   "theme": "mint",
   "favicon": "/favicon.ico",
   "logo": {

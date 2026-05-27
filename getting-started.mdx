@@ -6,13 +6,43 @@ icon: "rocket"
 
 ## Claude (Desktop or web)
 
-1. In **Claude**, go to **Connectors** → Add **Custom connector**.
-2. **Paste** the mcp URL:
-   `https://mcp.getomnier.com/mcp`
-3. **Connect** and complete the authorization flow. **Sign in** or **create an account** if prompted.
-4. Go to Claude settings → **Add** the following snippet to **Instructions** (orients Claude to use Omnier correctly):
-   > _Run Omnier tool: read\_skill(\[“todo\_list”\]) the start of a session_
-5. Open a new chat → **Send** message:
-   > _Help me setup a todo list requirements document in Omnier_
-6. Tell Claude to
-   > _Create a todo list for today_
+1. In Claude, go to Connectors → Add Custom connector.
+2. Paste the mcp URL:
+   ```text
+   https://mcp.getomnier.com/mcp
+   ```
+3. Connect and complete the authorization flow. Sign in or create an account if prompted.
+4. Go to Claude settings → Add the following snippet to Instructions (orients Claude to use Omnier correctly):
+   ```text
+   Run Omnier tool: read_skill([“todo_list”]) at the start of a session
+   ```
+5. Open a new chat → Send message:
+   ```text
+   Help me setup a todo list requirements document in Omnier
+   ```
+6. Tell Claude to:
+   ```text
+   Create a todo list for today
+   ```
+
+## Claude Code (CLI)
+
+1. Add Omnier mcp server:
+   ```text
+   claude mcp add --transport http omnier https://mcp.getomnier.com/mcp
+   ```
+2. Start Claude Code by running `claude`
+3. Type `/mcp` and press enter. Select `omnier` from the list and authenticate.
+4. Complete the authorization flow in the browser. **Sign in** or **create an account** if prompted.
+5. Add the following snippet to your `CLAUDE.MD`  file
+   ```text
+   Run Omnier tool: read_skill([“todo_list”]) at the start of a session
+   ```
+6. Send message:
+   ```text
+   Help me setup a todo list requirements document in Omnier
+   ```
+7. Tell Claude to:
+   ```text
+   Create a todo list for today
+   ```

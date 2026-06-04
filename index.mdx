@@ -4,12 +4,12 @@ description: "What is Omnier?"
 icon: "sparkles"
 ---
 
-Omnier is a sales To-Do list for you and your agents. It's the **system of action** your agent uses to plan, run and record sales tasks.  Key ideas:
+Omnier is a sales To-Do list for your agents. It's the **system of action** your agent uses to plan, run and record sales tasks.  Key ideas:
 
-1. Omnier enables your agent to turn signals from email, CRM, and meetings into a prioritized list of daily tasks
-2. The task list renders directly in your chat, so both you and the agent can run it together
+1. Omnier automatically turns signals from email, CRM, and meetings into a prioritised list of tasks for you and your agent
+2. The to-do list is available directly in your agent chat, and at [https://app.getomnier.com/home](https://app.getomnier.com/home).
 
-<Card title="Set up in Claude" icon="rocket" horizontal href="/getting-started">
+<Card title="Set up guide" icon="rocket" horizontal href="/getting-started">
   Connect Omnier to your agent.
 </Card>
 
@@ -18,6 +18,6 @@ Omnier is a sales To-Do list for you and your agents. It's the **system of actio
 | Tool | Role |
 | --- | --- |
 | **`read_skill`** | Loads skills the agent needs to use Omnier efficiently. |
-| **`query`** | Reads your workspace (todolists, documents) freely using SQL. RLS applied for all queries. |
-| **`action`** | Writes (create, update, delete todolists and documents) to your workspace freely using SQL. RLS applied for all actions. |
-| show\_todo\_list | Shows a live UI view of todays todo list in the agent chat. |
+| **`query`** | Reads your workspace (todo lists, documents) freely using SQL. |
+| **`action`** | Writes (create, update, delete todo lists and documents) to your workspace freely using SQL. |
+| `show_todo_list` | Shows a live UI view of the todo list directly in the agent chat. |

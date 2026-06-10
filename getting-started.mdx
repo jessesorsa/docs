@@ -4,19 +4,18 @@ description: "Connect and setup Omnier in a few simple steps."
 icon: "rocket"
 ---
 
-## Claude (Desktop or web)
+## Claude Code (Desktop)
 
 1. In Claude, go to Connectors → Add Custom connector and paste the mcp URL:
    ```text
    https://mcp.getomnier.com/mcp
    ```
 2. Connect and complete the authorisation flow. Sign in or create a new account if prompted.
-3. To update the todo list in the background: Go to [Omnier Integrations](https://app.getomnier.com/integrations), connect your email and calendar apps, and toggle on Capture signals
-4. Open a new chat → Send message:
+3. Open a new session → Send message:
    ```text
-   Help me setup a todo list requirements document in Omnier
+   Run Omnier setup
    ```
-5. Done! Claude can now use todo list, and you can interact with it directly in chat.
+4. Complete the setup with your agent
 
 ## Claude Code (CLI)
 
@@ -25,9 +24,8 @@ icon: "rocket"
    claude mcp add --transport http omnier https://mcp.getomnier.com/mcp
    ```
 2. Type `claude` , then type `/mcp` and press enter. Select `omnier` from the list and follow the authorisation flow. Sign in or create a new account if prompted.
-3. To update the todo list in the background: Go to [Omnier Integrations](https://app.getomnier.com/integrations), connect your email and calendar apps, and toggle on Capture signals
-4. Open a new chat → Send message:
+3. Send message:
    ```text
-   Help me setup a todo list requirements document in Omnier
+   Run Omnier setup
    ```
-5. Done! Claude Code can now use the todo list, and you can interact with it at: [Omnier](https://app.getomnier.com/home).
+4. Complete the setup with your agent

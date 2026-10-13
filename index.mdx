@@ -4,11 +4,12 @@ description: "What is Omnier?"
 icon: "sparkles"
 ---
 
-Omnier is a self-updating **system of context** for your agent to plan, run and record sales tasks. Key ideas:
+Omnier is a markdown based CRM for AI agents.
 
-1. Omnier turns signals from email and meetings into tasks and context for your agents, automatically in the background
-2. The context files live in a cloud directory, so any of your agents can read and write them, from anywhere
-3. The Omnier to-do list renders directly in your agent chat, allowing you to run tasks without manually prompting your agent
+1. Your customer records, playbooks, and automations live in your Omnier workspace, as plain markdown files.
+2. Connect your apps. The actions you take update the sales markdown files in your workspace automatically in the background. 
+3. The files stay up to date, so your agent always has the current context to accurately run your sales. See and edit every file yourself in a simple file view.
+
 
 <Card title="Set up guide" icon="rocket" horizontal href="/getting-started">
   Connect Omnier to your agent.
@@ -18,7 +19,7 @@ Omnier is a self-updating **system of context** for your agent to plan, run and 
 
 | Tool | Role |
 | --- | --- |
-| **`read_skill`** | Loads skills the agent needs to use Omnier efficiently. |
-| **`query`** | Reads your workspace (todo lists, files) freely using SQL. |
-| **`action`** | Writes (create, update, delete todo lists and files) to your workspace freely using SQL. |
-| `show_todo_list` | Shows a live UI view of the todo list directly in the agent chat. |
+| **`load_omnier_skill`** | Loads useful Omnier skills for your agent. |
+| **`read_file`** | Reads a file from your CRM. |
+| **`write_file`** | Creates or updates a file in your CRM. |
+| **`bash`** | Freely runs commands in your CRM. |

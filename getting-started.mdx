@@ -6,26 +6,36 @@ icon: "rocket"
 
 ## Claude Code (Desktop)
 
-1. In Claude, go to Connectors → Add Custom connector and paste the mcp URL:
+1. Open the **Customize** tab → Click **Connectors** → Add → add custom connector.
+2. Add name **Omnier** and MCP server URL:
    ```text
    https://mcp.getomnier.com/mcp
    ```
-2. Connect and complete the authorisation flow. Sign in or create a new account if prompted.
-3. Open a new session → Send message:
-   ```text
-   Run Omnier setup
-   ```
-4. Complete the setup with your agent
+3. Login in and connect. For new users send a message to **jesse@getomnier.com**
 
 ## Claude Code (CLI)
 
-1. Add Omnier mcp server:
-   ```text
+1. Add Omnier:
+   ```bash
    claude mcp add --transport http omnier https://mcp.getomnier.com/mcp
    ```
-2. Type `claude` , then type `/mcp` and press enter. Select `omnier` from the list and follow the authorisation flow. Sign in or create a new account if prompted.
-3. Send message:
+2. Type `claude`, then `/mcp`. Select `omnier` and authenticate.
+3. Login in and connect. For new users send a message to **jesse@getomnier.com**
+
+## Codex (Desktop)
+
+1. Open **Settings** → Click **MCP servers** → **Add server** → choose **Streamable HTTP**.
+2. Add name **Omnier** and MCP server URL:
    ```text
-   Run Omnier setup
+   https://mcp.getomnier.com/mcp
    ```
-4. Complete the setup with your agent
+3. Login in and connect. For new users send a message to **jesse@getomnier.com**
+
+## Codex (CLI)
+
+1. Add Omnier:
+   ```bash
+   codex mcp add omnier --url https://mcp.getomnier.com/mcp
+   ```
+2. Type `codex`, then `/mcp`. Select `omnier` and authenticate.
+3. Login in and connect. For new users send a message to **jesse@getomnier.com**

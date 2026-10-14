@@ -44,7 +44,8 @@
             "group": "Omnier",
             "pages": [
               "index",
-              "getting-started"
+              "getting-started",
+              "connections"
             ]
           }
         ]
@@ -54,7 +55,7 @@
   "navbar": {
     "links": [
       {
-        "label": "Getting started",
+        "label": "Connect your agent",
         "href": "/getting-started"
       }
     ],

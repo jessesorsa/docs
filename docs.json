@@ -1,7 +1,7 @@
 {
   "$schema": "https://mintlify.com/docs.json",
   "name": "Omnier",
-  "description": "Your GTM in markdown",
+  "description": "The company brain for sales",
   "theme": "mint",
   "favicon": "/favicon.ico",
   "logo": {

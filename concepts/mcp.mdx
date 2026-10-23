@@ -1,0 +1,26 @@
+---
+title: "MCP"
+description: "Why these tools, and what they give your agent."
+icon: "screwdriver-wrench"
+---
+
+Omnier v1 has no Omnier agent. You connect the agent you already use. MCP is how that agent reaches your team workspace.
+
+## Tools
+
+| Tool | Role |
+| --- | --- |
+| **`load_omnier_skill`** | Loads the schema and writing rules for a file type. Call this before you change files. |
+| **`read_file`** | Reads a file from the workspace. |
+| **`write_file`** | Creates or updates a file. |
+| **`bash`** | Runs commands in the workspace (search, git, jq). |
+
+## Why these tools
+
+`read_file`, `write_file`, and `bash` make the workspace feel local. The agent can search, edit, and commit the same way it would on your machine.
+
+`load_omnier_skill` exists so the agent does not guess the schema. Frontmatter keys, headings, and event types are fixed. Load the skill for the file types you will touch.
+
+## Benefit
+
+Any MCP client can use Omnier. You keep your own agent. Reading and using the files does not consume ingestion credits.

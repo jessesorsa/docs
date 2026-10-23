@@ -1,0 +1,33 @@
+---
+title: "Example use cases"
+description: "Ways to get more out of Omnier."
+icon: "lightbulb"
+---
+
+## Start from the deals you are in now
+
+Ask your agent to load `get_started` and create files for the companies you are actively working with. Write only the current situation.
+
+## Prep for a meeting
+
+Ask your agent to read `context.md`, the people files, and open tasks for that company.
+
+## Catch up LinkedIn
+
+Ask your agent to run `linkedin_sync`. It reads the last two weeks in the browser and writes matching CRM files.
+
+## Write your playbook
+
+Put ICP, pipeline stages, and outreach steps in `docs/current_playbook.md`. Ingestion and your agent use this file.
+
+## Draft in company files
+
+Put proposals, meeting prep, and contract drafts in `crm/<company>/files/`. Signal pipelines do not change these files.
+
+## See what changed
+
+Use git history on `context.md`, or search `events.jsonl`, to see how a relationship moved.
+
+## Hand a company to a teammate
+
+The files are the source of truth. Update `owner` on `context.md` and on the open tasks.

@@ -1,0 +1,47 @@
+---
+title: "Quick start"
+description: "Sign up, join your team, and connect your agent."
+icon: "rocket"
+---
+
+## 1. Sign up
+
+Create an account at [app.getomnier.com/signup](https://app.getomnier.com/signup).
+
+Team setup is still manual. After you sign up, send me a message at **jesse@getomnier.com**. I'll set up your workspace!
+
+## 2. Connect your agent
+
+Your agent talks to Omnier over MCP: `https://mcp.getomnier.com/mcp`
+
+### Claude Code (Desktop)
+
+1. Open **Customize** → **Connectors** → Add → custom connector.
+2. Name: **Omnier**. URL: `https://mcp.getomnier.com/mcp`
+3. Log in and connect.
+
+### Claude Code (CLI)
+
+```bash
+claude mcp add --transport http omnier https://mcp.getomnier.com/mcp
+```
+
+Then type `claude`, run `/mcp`, select `omnier`, and authenticate.
+
+### Codex (Desktop)
+
+1. Open **Settings** → **MCP servers** → **Add server** → **Streamable HTTP**.
+2. Name: **Omnier**. URL: `https://mcp.getomnier.com/mcp`
+3. Log in and connect.
+
+### Codex (CLI)
+
+```bash
+codex mcp add omnier --url https://mcp.getomnier.com/mcp
+```
+
+Then type `codex`, run `/mcp`, select `omnier`, and authenticate.
+
+## 3. Let your agent onboard you
+
+After authenticating ask your agent to load `get_started` and help you do the setup!

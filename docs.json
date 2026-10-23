@@ -41,11 +41,21 @@
         "tab": "Guides",
         "groups": [
           {
-            "group": "Omnier",
+            "group": "Get started",
             "pages": [
               "index",
-              "getting-started",
-              "connections"
+              "get-started/quick-start",
+              "get-started/integrations",
+              "get-started/use-cases"
+            ]
+          },
+          {
+            "group": "Concepts",
+            "pages": [
+              "concepts/structure",
+              "concepts/markdown-as-gtm",
+              "concepts/self-updating-context",
+              "concepts/mcp"
             ]
           }
         ]
@@ -55,8 +65,8 @@
   "navbar": {
     "links": [
       {
-        "label": "Connect your agent",
-        "href": "/getting-started"
+        "label": "Quick start",
+        "href": "/get-started/quick-start"
       }
     ],
     "primary": {
@@ -74,6 +84,16 @@
       "vscode"
     ]
   },
+  "redirects": [
+    {
+      "source": "/getting-started",
+      "destination": "/get-started/quick-start"
+    },
+    {
+      "source": "/connections",
+      "destination": "/get-started/integrations"
+    }
+  ],
   "footer": {
     "socials": {
       "github": "https://github.com/jessesorsa/docs",

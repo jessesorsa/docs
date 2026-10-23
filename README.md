@@ -2,7 +2,11 @@
 
 This repository powers the public **Omnier** docs (Mintlify). Content is MDX in the repo root; site config is [`docs.json`](./docs.json).
 
-**Pages (in order):** [What is Omnier?](./index.mdx) (home) → [Connect your agent](./getting-started.mdx) → [Connections](./connections.mdx). Written for founders and sales users, not developers.
+**Get started:** [Introduction](./index.mdx) (home) → [Quick start](./get-started/quick-start.mdx) → [Integrations](./get-started/integrations.mdx) → [Example use cases](./get-started/use-cases.mdx).
+
+**Concepts:** [Omnier structure](./concepts/structure.mdx) → [Markdown as GTM](./concepts/markdown-as-gtm.mdx) → [Self-updating context](./concepts/self-updating-context.mdx) → [MCP](./concepts/mcp.mdx).
+
+Written for founders and sales users, not developers.
 
 ## Local preview
 

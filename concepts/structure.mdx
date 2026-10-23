@@ -1,0 +1,179 @@
+---
+title: "Omnier structure"
+description: "Every file, field, and value in Omnier."
+icon: "folder-tree"
+---
+
+Each company is one folder. The top of a file has a few short fields. The rest is normal writing. File names use lowercase with underscores. If you do not know a value, leave it blank.
+
+## Files
+
+| Name | Description |
+| --- | --- |
+| `crm/<company>/` | The folder for one company you sell to. |
+| `context.md` | Where the deal stands right now. Start here. Price, budget, and deal size go here. |
+| `company.md` | Basic facts about the company. |
+| `people/firstname_lastname.md` | One markdown file per person. |
+| `tasks/task_name.md` | One markdown file per thing you still need to do. |
+| `files/name.md` | Extra notes or drafts for this company. Optional. Email and meeting updates do not change these. |
+| `events.jsonl` | History of emails, meetings, and other events. Append only. |
+| `docs/` | Team notes that are not about one company. Subfolders are fine. |
+| `docs/current_playbook.md` | How you sell. Keep this at the top of `docs/`. |
+
+## Context
+
+`context.md`. Where the deal stands right now. Not old history. Not your to-do list.
+
+| Name | Description |
+| --- | --- |
+| `type` | Always `context`. |
+| `owner` | Who on your team owns this company. |
+| `# <Company>` | The company name. |
+| `## Summary` | Who matters, where you are, what is next. One or two sentences. |
+| `## Where we are` | What is true today. Most important first. |
+| `## Open` | Open questions and risks. Take a line out when it is done. |
+
+## Company
+
+`company.md`. Skip a body line if you do not know it.
+
+| Name | Description |
+| --- | --- |
+| `type` | Always `company`. |
+| `name` | Company name. |
+| `domain` | Their website, like `acme.com`. |
+| `stage` | Pipeline number from your playbook. |
+| `source` | Who reached out first. `outbound` means you did. `inbound` means they did. |
+| `# Company name` | The company name. |
+| `## Location` | Where they are. |
+| `## Size` | How big they are. |
+| `## Industry` | What kind of company they are. |
+| `## Sales` | How they sell. |
+| `## Stack` | Tools they use. |
+
+## People
+
+`people/firstname_lastname.md`
+
+| Name | Description |
+| --- | --- |
+| `type` | Always `person`. |
+| `name` | Full name. |
+| `role` | Job title. |
+| `email` | Work email. |
+| `linkedin` | LinkedIn page. |
+| `linkedin_connected` | `true` once they accepted your LinkedIn invite. |
+| `replied` | `true` once they have replied at least once. Stays `true`. |
+| `# <Name>` | The person's name. |
+| `## Background` | Their job, team, and how long they have been there. |
+| `## What they told us` | What they said. One fact per line, with when they said it. |
+| `## Relationship` | How they fit in the deal, and what they care about. `decision maker`, `champion`, `user`, or `blocker`. |
+
+## Tasks
+
+`tasks/task_name.md`. A task is work you still owe: send a deck, book a meeting, prepare a proposal. A normal reply is not a task.
+
+| Name | Description |
+| --- | --- |
+| `type` | Always `task`. |
+| `title` | Short name for the work. |
+| `owner` | Who on your team should do it. |
+| `status` | `open` still to do. `done` finished. `cancelled` not doing it. |
+| `created_at` | When you added it. |
+| `due_at` | When it is due. Leave blank if there is no date. |
+| `## Why` | Why this exists, when it came up, and who asked. |
+| `## What to do` | The steps. |
+
+## Company files
+
+`files/name.md`. Extra notes or drafts for this company. Email and meeting updates do not change these files.
+
+| Name | Description |
+| --- | --- |
+| `type` | Always `file`. |
+| `owner` | Who on your team owns this file. |
+
+## Events
+
+`events.jsonl`. The history file for this company. One event per line. Only append, never edit.
+
+| Name | Description |
+| --- | --- |
+| `timestamp` | When the event happened. |
+| `type` | Event type. Listed below. |
+| `source` | Where it came from. `outlook` email or calendar. `circleback` a recorded meeting. `linkedin` LinkedIn. `agent` you or your agent. |
+| `people` | People on the event. |
+| `description` | One short line, usually the email subject or meeting title. |
+| `content` | Full text when there is any: email, message, or transcript. |
+
+| Event type | Description |
+| --- | --- |
+| `company_created` | This company was added. |
+| `person_added` | This person was added. |
+| `email_sent` | You sent an email. |
+| `email_received` | You got an email. |
+| `email_import` | An old email thread you brought in. |
+| `import_event` | Other old history you wanted to keep. |
+| `linkedin_connection_sent` | You sent a LinkedIn invite. |
+| `linkedin_connection_accepted` | They accepted. |
+| `linkedin_message_sent` | You sent a LinkedIn message. |
+| `linkedin_message_received` | You got a LinkedIn message. |
+| `meeting_transcript` | What was said in a meeting. |
+| `meeting_note` | Notes from a meeting. |
+| `meeting_accepted` | Someone accepted a meeting invite. |
+| `meeting_declined` | Someone declined a meeting invite. |
+| `meeting_tentative` | Someone marked a meeting as maybe. |
+| `meeting_cancelled` | The meeting was cancelled. |
+| `meeting_updated` | The time or place changed. |
+| `meeting_new_time_proposed` | Someone suggested a new time. |
+| `meeting_invite_received` | A new meeting invite arrived. |
+| `task_created` | A task was added. |
+| `task_done` | A task was finished. |
+| `other` | Anything that does not fit the list above. |
+
+## Playbook
+
+`docs/current_playbook.md`
+
+| Name | Description |
+| --- | --- |
+| `## Who we sell to` | Who is a fit, and who is not. |
+| `## Product` | What you sell. |
+| `## Pipeline` | Your stages, numbered. The `stage` on a company is that number. |
+
+## Agent tools in MCP
+
+| Name | Description |
+| --- | --- |
+| `load_omnier_skill` | Teaches your agent how a file should look. Use this before changing files. |
+| `read_file` | Opens a file. |
+| `write_file` | Creates or updates a file. Do not use this on the history file. |
+| `bash` | Lets your agent search, save history, and look at past changes. |
+
+## Agent skills in MCP
+
+| Name | Description |
+| --- | --- |
+| `overview` | What Omnier is, and how the files fit together. |
+| `get_started` | First setup: your playbook, your companies, then connect apps. |
+| `linkedin_sync` | Catch up LinkedIn from the browser. It only reads. It never sends. |
+| `context` | How to write `context.md`. |
+| `company` | How to write `company.md`. |
+| `person` | How to write a person file. |
+| `task` | How to write a task file. |
+| `events` | How to write history. |
+| `company_files` | How to write extra company files. |
+| `docs` | How to write team notes and the playbook. |
+
+## Integrations
+
+| Name | Description |
+| --- | --- |
+| Outlook | Your emails and calendar. Omnier updates the files for you. |
+| Gmail | Your emails and calendar. Omnier updates the files for you. |
+| Circleback | Meeting recordings. Omnier updates the files for you. |
+| LinkedIn | You ask your agent to catch up. It does not run on its own. |
+
+## Why a VM
+
+Each team has its own Linux workspace. The files are real files. And version control is enabled with git. Your agent reads, writes, and runs shell commands on that workspace, the same way it would on a local folder. Omnier is not a CRM API, but a sales specific company brain your agent can use as plain markdown files.

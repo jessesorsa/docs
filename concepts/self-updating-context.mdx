@@ -1,0 +1,24 @@
+---
+title: "Self-updating context"
+description: "How signals update the files in the background."
+icon: "arrows-rotate"
+---
+
+You do not run updates. Connected apps send signals. Omnier updates the files in the background.
+
+## What counts as a signal
+
+- Outlook: sent email, received email, calendar events
+- Circleback: meeting transcripts
+- LinkedIn: on demand, when you ask your agent to run `linkedin_sync`
+
+## What happens
+
+1. A signal arrives.
+2. Noise is dropped (personal mail, receipts, and similar).
+3. Omnier loads the related company files.
+4. It rewrites the markdown that should change (`context.md`, people, company, tasks).
+5. It appends a line to `events.jsonl`.
+6. It commits the change.
+
+The current picture lives in the markdown. The raw event lives in `events.jsonl`.

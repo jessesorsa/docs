@@ -1,33 +1,61 @@
 ---
 title: "Example use cases"
-description: "Ways to get more out of Omnier."
+description: "Copy a prompt into your agent and try it."
 icon: "lightbulb"
 ---
 
-## Start from the deals you are in now
+Some example uses case for how you can use Omnier. You can copy these, adapt them to you sales, and paste to your agent.
 
-Ask your agent to load `get_started` and create files for the companies you are actively working with. Write only the current situation.
+## Task creation rules
 
-## Prep for a meeting
+```text wrap
+Hey, after an intro meeting is done I want a follow-up task created to book the next meeting. Put that in the playbook so it happens from now on.
+```
 
-Ask your agent to read `context.md`, the people files, and open tasks for that company.
+## Onboard a new sales hire
 
-## Catch up LinkedIn
+```text wrap
+I just joined the sales team. Explain how we sell, how wins happen, and how losses happen. Base your answers on the product docs, playbooks, and real customer convos in Omnier.
+```
 
-Ask your agent to run `linkedin_sync`. It reads the last two weeks in the browser and writes matching CRM files.
+## Meeting prep
 
-## Write your playbook
+```text wrap
+I have a call with John at Acme today. Read the current Acme context, pull one quote from the last transcript, then what to push for, based on our playbook.
+```
 
-Put ICP, pipeline stages, and outreach steps in `docs/current_playbook.md`. Ingestion and your agent use this file.
+## Why did this deal stall
 
-## Draft in company files
+```text wrap
+Acme went quiet after the trial started. Check if there are any quotes from them in the meeting transcripts that could help answer why.
+```
 
-Put proposals, meeting prep, and contract drafts in `crm/<company>/files/`. Signal pipelines do not change these files.
+## Pipeline brief
 
-## See what changed
+```text wrap
+I have the weekly sales meeting in 1 hour. Do a deep dive version of the brief, and save it to docs/reports/weekly_brief_<date>.md.
+```
 
-Use git history on `context.md`, or search `events.jsonl`, to see how a relationship moved.
+## Follow-ups
 
-## Hand a company to a teammate
+```text wrap
+Check which customers need follow up. Then check the actual latest messages and current_playbook.md, and draft follow up emails in my gmail.
+```
 
-The files are the source of truth. Update `owner` on `context.md` and on the open tasks.
+## Research agent, fetch ICP
+
+```text wrap
+Read our ICP from docs/current_playbook.md from Omnier, and then go through this list of 100 potential companies. For ones that match our ICP, find their company page and founder linkedins, and finally add them to Omnier. Don't create duplicates.
+```
+
+## Feature requests
+
+```text wrap
+Pull feature requests from customer conversations (emails and meeting transcripts) in the last month. Write them to docs/product/feature_requests.md. Include which company asked, and a short quote if possible.
+```
+
+## Dev agent
+
+```text wrap
+Read docs/product/feature_requests.md from Omnier. Which of them would be only quick fixes? For those create a Linear issue for each request we have not already tracked. Link the company and the quote in the issue description.
+```

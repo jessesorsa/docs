@@ -1,26 +1,24 @@
 ---
 title: "Quick start"
-description: "Sign up, join your team, and connect your agent."
+description: "Paste one prompt into your agent."
 icon: "rocket"
 ---
 
-## 1. Sign up
+Paste this into Claude Code, Codex, or any other agent:
 
-Create an account at [app.getomnier.com/signup](https://app.getomnier.com/signup).
+```text
+Connect Omnier MCP at https://mcp.getomnier.com/mcp
 
-Team setup is still manual. After you sign up, send me a message at **jesse@getomnier.com**. I'll set up your workspace!
+Then show the authentication url to the user, so they can create an account.
 
-## 2. Connect your agent
+When the user is back, load get_started and onboard the user to Omnier.
+```
 
-Your agent talks to Omnier over MCP: `https://mcp.getomnier.com/mcp`
+## If you need to add MCP yourself
 
-### Claude Code (Desktop)
+URL: `https://mcp.getomnier.com/mcp`
 
-1. Open **Customize** → **Connectors** → Add → custom connector.
-2. Name: **Omnier**. URL: `https://mcp.getomnier.com/mcp`
-3. Log in and connect.
-
-### Claude Code (CLI)
+**Claude Code (CLI)**
 
 ```bash
 claude mcp add --transport http omnier https://mcp.getomnier.com/mcp
@@ -28,13 +26,7 @@ claude mcp add --transport http omnier https://mcp.getomnier.com/mcp
 
 Then type `claude`, run `/mcp`, select `omnier`, and authenticate.
 
-### Codex (Desktop)
-
-1. Open **Settings** → **MCP servers** → **Add server** → **Streamable HTTP**.
-2. Name: **Omnier**. URL: `https://mcp.getomnier.com/mcp`
-3. Log in and connect.
-
-### Codex (CLI)
+**Codex (CLI)**
 
 ```bash
 codex mcp add omnier --url https://mcp.getomnier.com/mcp
@@ -42,6 +34,4 @@ codex mcp add omnier --url https://mcp.getomnier.com/mcp
 
 Then type `codex`, run `/mcp`, select `omnier`, and authenticate.
 
-## 3. Let your agent onboard you
-
-After authenticating ask your agent to load `get_started` and help you do the setup!
+**Desktop:** add a custom MCP server named **Omnier** with that URL (Claude: Customize → Connectors. Codex: Settings → MCP servers → Streamable HTTP).

@@ -17,8 +17,8 @@ Each company is one folder. The top of a file has a few short fields. The rest i
 | `tasks/task_name.md` | One markdown file per thing you still need to do. |
 | `files/name.md` | Extra notes or drafts for this company. Optional. Email and meeting updates do not change these. |
 | `events.jsonl` | History of emails, meetings, and other events. Append only. |
-| `docs/` | Team notes that are not about one company. Subfolders are fine. |
-| `docs/current_playbook.md` | How you sell. Keep this at the top of `docs/`. |
+| `docs/` | Team notes that are not about one company. Subfolders are fine (`gtm/`, `product/`, `reports/`). |
+| `docs/current_playbook.md` | How you sell. Keep this at the top of `docs/`. Omnier uses this file as guide for handling incoming email and meeting signals. |
 
 ## Context
 
@@ -149,6 +149,9 @@ Each company is one folder. The top of a file has a few short fields. The rest i
 | `read_file` | Opens a file. |
 | `write_file` | Creates or updates a file. Do not use this on the history file. |
 | `bash` | Lets your agent search, save history, and look at past changes. |
+| `connection_info` | Lists Gmail, Outlook, and Circleback, and whether capture is on. |
+| `connect_apps_to_omnier` | Returns a sign-in URL for Gmail, Outlook, or Circleback. |
+| `set_ingestion` | Turns Gmail or Outlook capture on or off after the app is connected. Circleback is on when connected. |
 
 ## Agent skills in MCP
 
@@ -156,6 +159,7 @@ Each company is one folder. The top of a file has a few short fields. The rest i
 | --- | --- |
 | `overview` | What Omnier is, and how the files fit together. |
 | `get_started` | First setup: your playbook, your companies, then connect apps. |
+| `pipeline_report` | Interview, then a short pipeline or weekly sales report. |
 | `linkedin_sync` | Catch up LinkedIn from the browser. It only reads. It never sends. |
 | `context` | How to write `context.md`. |
 | `company` | How to write `company.md`. |
